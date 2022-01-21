@@ -1,0 +1,946 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>E-KYC API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["bash","javascript"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="bash">bash</a>
+                                  <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://venturesolutionsltd.com/'>Documentation Powered by Venture Solution Limited</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the E-KYC API reference.</p>
+<!-- END_INFO -->
+<h1>API Authentication</h1>
+<!-- START_02a39415df20bccffb0cce75c80c89dd -->
+<h2>api/auth-info</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://localhost/api/auth-info" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/auth-info"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "success",
+    "data": {
+        "name": "Venture Solution Limited",
+        "email": "vsl@gmail.com",
+        "api_token": "$2a$09$w8G5k9SiK0WQctXclwu6TuN7RclNeRNaz2DZ4s9bGiP0cALrFRhAG$2a$09$w8G5k9SiK0WQc"
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 401,
+    "success": false,
+    "message": "unathencticated user"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/auth-info</code></p>
+<!-- END_02a39415df20bccffb0cce75c80c89dd -->
+<h1>general</h1>
+<!-- START_27fb411207c7fe31fc3477f33a72c763 -->
+<h2>Customer Registration</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/registartion" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"phone":"01712345678","email":"example@ekyc.com"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/registartion"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+let body = {
+    "phone": "01712345678",
+    "email": "example@ekyc.com"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "registation success",
+    "data": {
+        "customer_id": 107
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 400,
+    "success": false,
+    "message": "please give your mobile_number"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/registartion</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>phone</code></td>
+<td>numeric</td>
+<td>required</td>
+<td>phone number must be numberic,unique</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>string</td>
+<td>optional</td>
+<td>optional  phone number must be numberic,unique</td>
+</tr>
+</tbody>
+</table>
+<!-- END_27fb411207c7fe31fc3477f33a72c763 -->
+<!-- START_77ad6cd0e5dba8ea02dc64af48cee529 -->
+<h2>Customer Nid-Ocr</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/nid-ocr" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"customer_id":1,"nid_front_image":"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAf4AAAE7CAMAAAAL","nid_back_image":"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgMAAAFACAMAAAAWIY8"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/nid-ocr"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+let body = {
+    "customer_id": 1,
+    "nid_front_image": "data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAf4AAAE7CAMAAAAL",
+    "nid_back_image": "data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgMAAAFACAMAAAAWIY8"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "nid-ocr successfully",
+    "data": {
+        "customer_id": "108",
+        "english_name": "MD. SAMIUL HAQUE",
+        "nid_number": "6410581760",
+        "date_of_birth": "1995-11-19"
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 400,
+    "success": false,
+    "message": "please give nid front image"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/nid-ocr</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customer_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>customer_id for slef varification into the E-KYC</td>
+</tr>
+<tr>
+<td><code>nid_front_image</code></td>
+<td>text</td>
+<td>required</td>
+<td>nid_front_image base64 format send for OCR Nid Front Part</td>
+</tr>
+<tr>
+<td><code>nid_back_image</code></td>
+<td>text</td>
+<td>required</td>
+<td>nid_back_image base64 format send for OCR Nid Back Part</td>
+</tr>
+</tbody>
+</table>
+<!-- END_77ad6cd0e5dba8ea02dc64af48cee529 -->
+<!-- START_6a288f973c16aa2187a740c80e8a5e91 -->
+<h2>OCR Ammendment</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/ammendment-ocr-data" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"customer_id":1,"english_name":"Md.Rabiul Hasan","nid_back_image":"123 456 7890","date_of_birth":"1997-04-13"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/ammendment-ocr-data"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+let body = {
+    "customer_id": 1,
+    "english_name": "Md.Rabiul Hasan",
+    "nid_back_image": "123 456 7890",
+    "date_of_birth": "1997-04-13"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "ocr-ammendment successfully",
+    "data": {
+        "customer_id": "108"
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 400,
+    "success": false,
+    "message": "nid number already exists"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 400,
+    "success": false,
+    "message": "please give english name"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/ammendment-ocr-data</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customer_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>customer_id for slef varification into the E-KYC</td>
+</tr>
+<tr>
+<td><code>english_name</code></td>
+<td>text</td>
+<td>required</td>
+<td>English Name Ammendment If OCR Read Wrong Data</td>
+</tr>
+<tr>
+<td><code>nid_back_image</code></td>
+<td>text</td>
+<td>required</td>
+<td>NID Number Ammendment If OCR Read Wrong Data</td>
+</tr>
+<tr>
+<td><code>date_of_birth</code></td>
+<td>text</td>
+<td>required</td>
+<td>Date Of Birth ammendment If OCR Read Wrong Data</td>
+</tr>
+</tbody>
+</table>
+<!-- END_6a288f973c16aa2187a740c80e8a5e91 -->
+<!-- START_cc3d3a48f2f1e1ea5a940993450e813f -->
+<h2>Customer Face Verification</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/face-verification" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"customer_id":1,"face_image":"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAf4AAAE7CAMAAAAL"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/face-verification"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+let body = {
+    "customer_id": 1,
+    "face_image": "data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAf4AAAE7CAMAAAAL"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "face varification success",
+    "data": {
+        "customer_id": "108",
+        "isIdentical": true,
+        "recognize_percentage": 66.713,
+        "required_percentage": 50,
+        "verified": true
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 400,
+    "success": false,
+    "message": "face identification failed",
+    "data": {
+        "isIdentical": false,
+        "recognize_percentage": "14.34",
+        "verified": false
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 400,
+    "success": false,
+    "message": "does no fillup required percentage",
+    "data": {
+        "isIdentical": true,
+        "recognize_percentage": 66.713,
+        "required_percentage": 80,
+        "verified": false
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/face-verification</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customer_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>customer_id for slef varification into the E-KYC</td>
+</tr>
+<tr>
+<td><code>face_image</code></td>
+<td>text</td>
+<td>required</td>
+<td>face_image base64 format send for Face Verification</td>
+</tr>
+</tbody>
+</table>
+<!-- END_cc3d3a48f2f1e1ea5a940993450e813f -->
+<!-- START_74255e7aff58bcdff49b89dbfb9163a3 -->
+<h2>Customer Signature Upload</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/signature-upload" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"customer_id":1,"signature_image":"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAf4AAAE7CAMAAAAL"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/signature-upload"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+let body = {
+    "customer_id": 1,
+    "signature_image": "data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAf4AAAE7CAMAAAAL"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "signature upload successfully",
+    "data": {
+        "customer_id": "106",
+        "bangla_name": "মােঃ সামিউল হক",
+        "blood_group": "",
+        "date_of_birth": "1990-01-15",
+        "father_name": "মােঃ সানাউল হক",
+        "mother_name": "মাতা",
+        "address": "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার মােঃ সামিউল হক পিতা মােঃ সানাউল হক মাতা আফরুজা হক"
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 404,
+    "success": false,
+    "message": "customer not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/signature-upload</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customer_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>customer_id for slef varification into the E-KYC</td>
+</tr>
+<tr>
+<td><code>signature_image</code></td>
+<td>text</td>
+<td>required</td>
+<td>signature_image base64 format send for Signature</td>
+</tr>
+</tbody>
+</table>
+<!-- END_74255e7aff58bcdff49b89dbfb9163a3 -->
+<!-- START_48f7fa60a24de307bdcff61eb53c7ccb -->
+<h2>All Branch List</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/branch-list" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/branch-list"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "success",
+    "data": {
+        "all_branch_lis": [
+            {
+                "id": 1,
+                "name": "BARISAL"
+            },
+            {
+                "id": 2,
+                "name": "BOGRA"
+            }
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/branch-list</code></p>
+<!-- END_48f7fa60a24de307bdcff61eb53c7ccb -->
+<!-- START_bab725a70a031cad69b4709fad4ef449 -->
+<h2>All Account Types</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/account-types" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/account-types"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "success",
+    "data": {
+        "all_account_types": [
+            {
+                "id": 1,
+                "name": "Cash Security For BTB"
+            },
+            {
+                "id": 2,
+                "name": "Saving Deposite(General)"
+            }
+        ]
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/account-types</code></p>
+<!-- END_bab725a70a031cad69b4709fad4ef449 -->
+<!-- START_948d0fe0a7f55821e92eb609a5104370 -->
+<h2>Customer Review Information</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/review-information" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"customer_id":18,"english_name":"1","bangla_name":"1","blood_group":"1","date_of_birth":"1","father_name":"1","mother_name":"1","address":"1"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/review-information"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+let body = {
+    "customer_id": 18,
+    "english_name": "1",
+    "bangla_name": "1",
+    "blood_group": "1",
+    "date_of_birth": "1",
+    "father_name": "1",
+    "mother_name": "1",
+    "address": "1"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "review-data successfully",
+    "data": {
+        "customer_id": "108"
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 400,
+    "success": false,
+    "message": "The date of birth field is required."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/review-information</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customer_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>customer_id for slef varification into the E-KYC Example                   : 1</td>
+</tr>
+<tr>
+<td><code>english_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>english_name review for data matching more accurecy</td>
+</tr>
+<tr>
+<td><code>bangla_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>bangla_name review for data matching more accurecy</td>
+</tr>
+<tr>
+<td><code>blood_group</code></td>
+<td>string</td>
+<td>required</td>
+<td>blood_group review for data matching more accurecy</td>
+</tr>
+<tr>
+<td><code>date_of_birth</code></td>
+<td>date</td>
+<td>required</td>
+<td>date_of_birth review for data matching more accurecy</td>
+</tr>
+<tr>
+<td><code>father_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>father_name review for data matching more accurecy</td>
+</tr>
+<tr>
+<td><code>mother_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>mother_name review for data matching more accurecy</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>text</td>
+<td>required</td>
+<td>address review for data matching more accurecy</td>
+</tr>
+</tbody>
+</table>
+<!-- END_948d0fe0a7f55821e92eb609a5104370 -->
+<!-- START_23a4a4e7c793603912cc1266c0c961c4 -->
+<h2>Account Opening Requst Form</h2>
+<p><br><small style="padding: 1px 9px 2px;font-weight: bold;white-space: nowrap;color: #ffffff;-webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;background-color: #3a87ad;">Requires authentication</small></p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/account-opening" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {token}" \
+    -d '{"customer_id":6,"branch_code":1,"account_type":1,"monthly_income":"nobis","monthly_deposit":"sed","monthly_withdraw":"porro","nominee_name":"sapiente","nominee_nid_number":"harum","nominee_address":"reiciendis"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/account-opening"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {token}",
+};
+
+let body = {
+    "customer_id": 6,
+    "branch_code": 1,
+    "account_type": 1,
+    "monthly_income": "nobis",
+    "monthly_deposit": "sed",
+    "monthly_withdraw": "porro",
+    "nominee_name": "sapiente",
+    "nominee_nid_number": "harum",
+    "nominee_address": "reiciendis"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "success": true,
+    "message": "account opening request successfully"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 400,
+    "success": false,
+    "message": "please give branch code"
+}</code></pre>
+<blockquote>
+<p>Example response (400):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 400,
+    "success": false,
+    "message": "already account opening request",
+    "data": {
+        "message": "your account opening request has been pending.Bank authority will contact as soon as possible"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/account-opening</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customer_id</code></td>
+<td>integer</td>
+<td>required</td>
+<td>customer_id for slef varification into the E-KYC Example                   : 1</td>
+</tr>
+<tr>
+<td><code>branch_code</code></td>
+<td>integer</td>
+<td>required</td>
+<td>branch_code for which branch customer send account opening request</td>
+</tr>
+<tr>
+<td><code>account_type</code></td>
+<td>integer</td>
+<td>required</td>
+<td>account_type for which type account you want to create</td>
+</tr>
+<tr>
+<td><code>monthly_income</code></td>
+<td>numeric</td>
+<td>required</td>
+<td>monthly_income for customer  account opening request Example           : 10000</td>
+</tr>
+<tr>
+<td><code>monthly_deposit</code></td>
+<td>numeric</td>
+<td>required</td>
+<td>monthly_deposit for customer  account opening request Example         : 10000</td>
+</tr>
+<tr>
+<td><code>monthly_withdraw</code></td>
+<td>numeric</td>
+<td>required</td>
+<td>monthly_withdraw for customer  account opening request Example       : 10000</td>
+</tr>
+<tr>
+<td><code>nominee_name</code></td>
+<td>string</td>
+<td>required</td>
+<td>nominee_name for customer  account opening request Example                : Rabiul Hasan</td>
+</tr>
+<tr>
+<td><code>nominee_nid_number</code></td>
+<td>string</td>
+<td>required</td>
+<td>nominee_nid_number for customer  account opening request Example    : 123 456 7890</td>
+</tr>
+<tr>
+<td><code>nominee_address</code></td>
+<td>string</td>
+<td>required</td>
+<td>nominee_address for customer  account opening request Example          : Dhaka, Bangladesh</td>
+</tr>
+</tbody>
+</table>
+<!-- END_23a4a4e7c793603912cc1266c0c961c4 -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>

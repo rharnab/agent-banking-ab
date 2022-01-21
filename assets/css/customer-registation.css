@@ -1,0 +1,168 @@
+.loader {
+    content         : '';
+    background-color: rgba(255, 255, 255, 0.7);
+    position        : absolute;
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    top             : 0;
+    left            : 0;
+    right           : 0;
+    bottom          : 0;
+}   
+
+ /* CSS comes here */
+ #video {
+    border: 1px solid black;
+    width: 320px;
+    height: 282;
+}
+
+#photo {
+    width: 320px;
+    height: 282;
+    margin-top: 30px;
+}
+
+#canvas {
+    display: none;
+}
+
+.camera {
+    display: inline-block;
+}
+
+
+
+#startbutton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 36px;
+    padding: 5px;
+    background-color: #6a67ce;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 1.0);
+    cursor: pointer;
+}
+
+.contentarea {
+    font-size: 16px;
+    font-family: Arial;
+    text-align: center;
+}
+
+
+
+ 
+
+
+ .container .progress-bar_custom .step{
+ text-align: center;
+ width: 100%;
+ position: relative;
+ }
+ .container .progress-bar_custom .step p{
+     font-weight: 600;
+     font-size: 12px;
+     color: #000;
+     margin-bottom: 8px;
+ }
+ .progress-bar_custom .step .bullet{
+ height: 25px;
+ width: 25px;
+ border: 2px solid #000;
+ display: inline-block;
+ border-radius: 50%;
+ position: relative;
+ transition: 0.2s;
+ font-weight: 500;
+ font-size: 17px;
+ line-height: 25px;
+ }
+ .progress-bar_custom .step .bullet.active{
+ color: #fff;
+ border-color: #0f735f;
+ background: #0f735f;
+
+ }
+ .progress-bar_custom .step .bullet span {
+     top: -2px;
+     position: absolute;
+     font-size: 14px;
+     left: 51%;
+     transform: translateX(-50%);
+ }
+
+
+
+
+ .progress-bar_custom .step .bullet.active:after{
+ background: #0f735f;
+ transform: scaleX(0);
+ transform-origin: left;
+ animation: animate 0.3s linear forwards;
+ }
+ @keyframes animate {
+ 100%{
+     transform: scaleX(1);
+ }
+ }
+ .progress-bar_custom .step:last-child .bullet:before,
+ .progress-bar_custom .step:last-child .bullet:after{
+ display: none;
+ }
+ .progress-bar_custom .step p.active{
+ color: #0f735f;
+ transition: 0.2s linear;
+ }
+ .progress-bar_custom .step .check{
+ position: absolute;
+ left: 50%;
+ top: 70%;
+ font-size: 15px;
+ transform: translate(-50%, -50%);
+ display: none;
+ }
+ .progress-bar_custom .step .check.active{
+ display: block;
+ color: #fff;
+ }
+
+
+ .ibox-title h5{
+     font-size: 12px;
+ }
+
+
+/*my css*/
+
+ @media screen and  (min-width: 1171px) {
+
+    .container .progress-bar_custom{
+        display: flex;
+         margin: 40px 0;
+         user-select: none;
+ }
+
+}
+
+ @media screen and  (min-width: 325px) and (max-width: 1170px) {
+
+    .container .progress-bar_custom{
+         display: flex;
+         margin: 0px;
+         margin-left: -23px;
+         user-select: none;
+
+ }
+
+
+
+
+
+}
+
+
+

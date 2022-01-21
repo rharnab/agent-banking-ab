@@ -1,0 +1,171 @@
+div#front_image_show_part {
+	position: relative;
+}
+
+input#front_image {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.fileinput.fileinput-new {
+	position: absolute;
+	top: 200px;
+	right: 9;
+	left: 40%;
+	background: gray;
+	top: 90;
+}
+
+.fileinput.fileinput-new.face-image-button{
+	position: absolute;
+	top: 294px;
+	right: 9;
+	left: 40%;
+	background: gray;
+	top: 90;
+}
+
+
+#photo {
+	width: 320px;
+	height: 282;
+	/* margin-top: 0px; */
+}
+
+.progress-bar_custom .step .bullet:before,
+.progress-bar_custom .step .bullet:after {
+	position: absolute;
+	content: '';
+	bottom: 9px;
+	right: -135px;
+	height: 3px;
+	width: 133px;
+	background: #848484;
+}
+
+@media screen and (min-width: 845px) and (max-width: 960px) {
+	.progress-bar_custom .step .bullet:before,
+	.progress-bar_custom .step .bullet:after {
+		position: absolute;
+		content: '';
+		bottom: 9px;
+		right: -0px;
+		height: 3px;
+		width: 0px;
+		background: #848484;
+	}
+
+	.fileinput.fileinput-new.face-image-button{
+		position: absolute;
+		top: 294px;
+		right: 9;
+		left: 40%;
+		background: gray;
+		top: 90;
+	}
+}
+
+
+/*responsive my css code*/
+
+@media screen and (min-width: 529px) and (max-width: 768px) {
+	.progress-bar_custom .step .bullet:before,
+	.progress-bar_custom .step .bullet:after {
+		position: absolute;
+		content: '';
+		bottom: 6px;
+		right: -47px;
+		height: 2px;
+		width: 46px;
+		background: #848484;
+	}
+	.progress-bar_custom .step .bullet {
+		height: 19px;
+		width: 19px;
+	}
+	.container .progress-bar_custom .step p {
+		font-size: 14px;
+	}
+	.progress-bar_custom .step .bullet span {
+		top: -5px;
+		font-size: 11px;
+	}
+	.container .progress-bar_custom .step {
+		padding-left: 7px;
+	}
+
+	.fileinput.fileinput-new.face-image-button{
+		position: absolute;
+		top: 294px;
+		right: 9;
+		left: 40%;
+		background: gray;
+		top: 90;
+	}
+
+}
+
+@media only screen and (max-width: 480px) {
+	img#front_image_preview.img.img-fluid.img-responsive {
+		padding-left: 15px;
+	}
+	img#back_image_preview.img.img-fluid.img-responsive {
+		padding-left: 15px;
+	}
+	img#f_image_preview.img.img-fluid.img-responsive {
+		padding-left: 15px;
+	}
+	.fileinput.fileinput-new {
+		left: 37%;
+	}
+	.progress-bar_custom .step .bullet:before,
+	.progress-bar_custom .step .bullet:after {
+		position: absolute;
+		content: '';
+		bottom: 6px;
+		right: -24px;
+		height: 2px;
+		width: 20px;
+		background: #848484;
+	}
+	.container .progress-bar_custom .step {
+		font-size: 6px;
+		text-align: center;
+		width: 100%;
+		position: relative;
+		padding-left: 6px;
+	}
+	.step_text_1 {
+		font-size: 6px;
+	}
+	.ibox-content {
+		padding: 15px 16px 24px 0px;
+	}
+	.progress-bar_custom .step .bullet {
+		margin-left: 18px;
+		height: 19px;
+		width: 20px;
+	}
+	.progress-bar_custom .step .bullet span {
+		top: -5px;
+		font-size: 11px;
+	}
+	.container .progress-bar_custom .step p {
+		display: none;
+		font-size: 10px;
+    }
+    .outstep{
+        margin-bottom: 0;
+	}
+	
+	.fileinput.fileinput-new.face-image-button{
+		position: absolute;
+		top: 294px;
+		right: 9;
+		left: 40%;
+		background: gray;
+		top: 90;
+	}
+	
+}
